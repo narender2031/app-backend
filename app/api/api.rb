@@ -1,26 +1,25 @@
-require_relative 'boot'
+require 'grape-swagger'
+class API < Grape::API
+before do
+  header 'Access-Control-Allow-Origin', '*'
+  header 'Access-Control-Allow-Methods', 'GET, POST, DELETE, PATCH, OPTIONS, PUT'
+end
+    prefix 'api'
+    version 'v1', using: :path
+    default_format :json
 
-require 'rails/all'
+    mount User::Session
+    add_swagger_documentation(
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+        mount_path: '/docs',
+        markdown: false,
+        hide_documantation_path: true,
+        api_version: '1.0'
 
-module AppBackend
-  class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.1
-    config.secret_key_base = '<%= ENV["SECRET_KEY_BASE"] %>'
-    config.middleware.use Rack::Cors do
-      allow do
-        origins "*"
-        resource "*", headers: :any, methods: [:get, :post, :put, :delete, :options]
-      end
-    end
-    # config.active_record.raise_in_transactional_callbacks = true
-    
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
-  end
+
+
+    )
+
+
+
 end
