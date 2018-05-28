@@ -43,7 +43,14 @@ GEM
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
+    attr_encrypted (3.0.3)
+      encryptor (~> 3.0.0)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     bindex (0.5.0)
+    bootstrap-tour-rails (0.4.0)
     builder (3.2.3)
     byebug (10.0.2)
     capistrano (3.10.2)
@@ -73,6 +80,8 @@ GEM
       xpath (>= 2.0, < 4.0)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -82,16 +91,39 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
+    encryptor (3.0.0)
+    equalizer (0.0.11)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    grape (1.0.3)
+      activesupport
+      builder
+      mustermann-grape (~> 1.0.0)
+      rack (>= 1.3.0)
+      rack-accept
+      virtus (>= 1.0.0)
+    grape-entity (0.6.1)
+      activesupport (>= 5.0.0)
+      multi_json (>= 1.3.2)
+    grape-swagger (0.27.3)
+      grape (>= 0.16.2)
+    grape-swagger-rails (0.3.0)
+      railties (>= 3.2.12)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    ice_nine (0.11.2)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jquery-rails (4.3.3)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -106,6 +138,9 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+    mustermann (1.0.2)
+    mustermann-grape (1.0.0)
+      mustermann (~> 1.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
@@ -116,6 +151,9 @@ GEM
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
+    rack-cors (1.0.2)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.1.6)
@@ -176,6 +214,9 @@ GEM
     sshkit (1.16.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    swagger-docs (0.2.9)
+      activesupport (>= 3)
+      rails (>= 3)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -186,6 +227,11 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.10)
       execjs (>= 0.3.0, < 3)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     web-console (3.6.2)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -201,6 +247,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  attr_encrypted (~> 3.0.0)
+  bootstrap-tour-rails
   byebug
   capistrano
   capistrano-bundler
@@ -209,15 +257,22 @@ DEPENDENCIES
   capistrano3-puma
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  grape
+  grape-entity
+  grape-swagger
+  grape-swagger-rails
   jbuilder (~> 2.5)
+  jquery-rails
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 3.7)
+  rack-cors
   rails (~> 5.1.6)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
+  swagger-docs
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
