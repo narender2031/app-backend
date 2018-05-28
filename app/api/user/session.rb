@@ -18,7 +18,7 @@ module User
 			end
 		end
 		# login SignUp Api's
-		resource :signup do 
+		resource :destinor do 
 			desc "Quries Destinors"
 			params do 
 				#require all parameter come from request and also define the data flow in body or header
@@ -27,7 +27,7 @@ module User
 				requires :phone, type:String
 			end
 			#define the methos here post, get, put delete
-			post '/destinor' do 
+			post '/' do 
 				status 200
 				if params[:email].blank?
 					error!({error:"email is missing"},404)
